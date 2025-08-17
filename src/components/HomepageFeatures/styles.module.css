@@ -1,11 +1,50 @@
 .features {
+  padding: 3rem 1rem;
+  background: linear-gradient(180deg, #f9fafb, #ffffff);
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.featureCard {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.iconWrapper {
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 2rem 0;
-  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  width: 80px;
+  height: 80px;
+}
+
+.featureTitle {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: #111827;
+}
+
+.featureDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4b5563;
 }
