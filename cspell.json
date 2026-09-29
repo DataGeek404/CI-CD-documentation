@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en",
+  "useGitignore": true,
+  "ignorePaths": [
+    "node_modules/**",
+    "build/**",
+    ".docusaurus/**",
+    "package-lock.json",
+    "docs/intro.md",
+    "docs/tutorial-basics/**",
+    "docs/tutorial-extras/**",
+    "blog/2019-05-28-first-blog-post.md",
+    "blog/2021-08-26-welcome/**"
+  ],
+  "words": [
+    "Buildx",
+    "cicd",
+    "Falco",
+    "Frontmatter",
+    "hotfixes",
+    "kiptum",
+    "Lorber",
+    "Marcey",
+    "Muchiri",
+    "Pulumi",
+    "Pylint",
+    "Qube",
+    "Sébastien",
+    "Wazuh"
+  ]
+}
