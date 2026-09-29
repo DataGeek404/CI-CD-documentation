@@ -1,0 +1,38 @@
+# Template: run the site locally in containers.
+#
+#   docker compose -f templates/docker-compose.yml up --build
+#       -> production image (nginx) on http://localhost:8080
+#   docker compose -f templates/docker-compose.yml --profile dev up
+#       -> live-reloading dev server on http://localhost:3000
+#
+# Compose reads variables from templates/.env (copy templates/.env.example).
+# Relative paths below are resolved from this file's directory (templates/).
+
+services:
+  # Same image CI would build and ship: catches Dockerfile problems before CI does.
+  docs:
+    build:
+      context: .. # repository root, where package.json lives
+      dockerfile: templates/Dockerfile
+    ports:
+      # ${VAR:-default}: use the .env value if set, otherwise the default.
+      - "${DOCS_PORT:-8080}:80"
+    restart: unless-stopped
+
+  # Development server with hot reload. Only started with --profile dev.
+  dev:
+    profiles: [dev]
+    image: node:22-alpine
+    working_dir: /app
+    # Bind-mount the source so edits on the host show up immediately.
+    volumes:
+      - ..:/app
+      # Anonymous volume hides the host's node_modules: native binaries built
+      # for Windows/macOS would not run inside this Linux container.
+      - /app/node_modules
+    # --host 0.0.0.0: listen on all interfaces so the port mapping works.
+    # --poll: file-change events don't cross Docker Desktop bind mounts
+    # reliably on Windows/macOS, so poll for changes instead.
+    command: sh -c "npm ci && npm start -- --host 0.0.0.0 --port 3000 --poll 1000 --no-open"
+    ports:
+      - "${DEV_PORT:-3000}:3000"
