@@ -12,7 +12,7 @@
 # ---- Stage 1: build ---------------------------------------------------------
 # Match the Node major in .nvmrc. For fully reproducible builds, pin a digest:
 #   FROM node:22-alpine@sha256:<digest> AS build
-FROM node:22-alpine AS build
+FROM node:26-alpine AS build
 
 WORKDIR /app
 
