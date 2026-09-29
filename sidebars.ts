@@ -20,5 +20,12 @@ module.exports = {
         'ci',
       ],
     },
+    {
+      type: 'category',
+      label: 'Pipelines',
+      items: [
+        'pipelines/vercel-deployment',
+      ],
+    },
   ],
 };
