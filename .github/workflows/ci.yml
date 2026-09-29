@@ -1,0 +1,56 @@
+# CI: every push and pull request must lint, type-check, test and build.
+# The job name "Lint, type-check, test, build" is the required status check
+# referenced in docs/configuration/branch-protection.md; renaming it means
+# updating the branch protection rule too.
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+# Least privilege: this workflow only needs to read the repository.
+permissions:
+  contents: read
+
+concurrency:
+  # One run per branch/PR; a new push cancels the superseded PR run.
+  # Runs on master/main are never cancelled so every merge gets a result.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  ci:
+    name: Lint, type-check, test, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Don't leave the GITHUB_TOKEN in .git/config for later steps.
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          # Caches ~/.npm keyed on package-lock.json; `npm ci` still runs.
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint Markdown
+        run: npm run lint:md
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build site
+        run: npm run build

@@ -1,0 +1,87 @@
+# Documentation quality: Markdown style, external links and spelling.
+# Config files: .markdownlint-cli2.jsonc, lychee.toml, cspell.json
+name: Docs quality
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "**/*.md"
+      - "**/*.mdx"
+      - ".markdownlint-cli2.jsonc"
+      - "lychee.toml"
+      - "cspell.json"
+      - ".github/workflows/docs-quality.yml"
+  pull_request:
+    branches: [master, main]
+    paths:
+      - "**/*.md"
+      - "**/*.mdx"
+      - ".markdownlint-cli2.jsonc"
+      - "lychee.toml"
+      - "cspell.json"
+      - ".github/workflows/docs-quality.yml"
+  # External links rot without any commit; check them weekly (Monday 06:00 UTC).
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  markdownlint:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # Picks up globs, ignores and rules from .markdownlint-cli2.jsonc.
+      - name: Run markdownlint-cli2
+        uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24.2.0
+
+  links:
+    name: Link check
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # External links only; internal links are enforced by the Docusaurus
+      # build (onBrokenLinks: 'throw'). GITHUB_TOKEN avoids GitHub rate limits.
+      - name: Run lychee
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: --config lychee.toml --no-progress './**/*.md' './**/*.mdx'
+          fail: true
+
+  spelling:
+    name: Spell check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Run cspell
+        uses: streetsidesoftware/cspell-action@6f3c77c1406bc930f944ba97e9801a22e42caf58 # v9.1.0
+        with:
+          config: cspell.json
+          files: |
+            **/*.md
+            **/*.mdx
+          # Check every file, not just the ones changed in this push/PR.
+          incremental_files_only: false

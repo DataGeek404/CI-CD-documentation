@@ -1,0 +1,24 @@
+# Build-context exclusions for templates/Dockerfile.
+# BuildKit uses <Dockerfile name>.dockerignore next to the Dockerfile in
+# preference to a .dockerignore at the context root, so this file applies
+# even though the build context is the repository root.
+
+# Installed and generated files: rebuilt inside the image.
+node_modules
+build
+.docusaurus
+.cache-loader
+
+# Version control and CI metadata are not needed to build the site.
+.git
+.github
+
+# Never send local secrets or Vercel credentials into the build context.
+.env
+.env.*
+!.env.example
+.vercel
+
+# Logs and OS clutter.
+npm-debug.log*
+.DS_Store

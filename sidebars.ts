@@ -7,6 +7,7 @@ module.exports = {
       type: 'category',
       label: 'DevOps & CI/CD',
       items: [
+        'introduction',
         'overview',
         'architecture',
         'branching',
@@ -17,6 +18,13 @@ module.exports = {
         'troubleshooting',
         'glossary',
         'ci',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Pipelines',
+      items: [
+        'pipelines/vercel-deployment',
       ],
     },
   ],

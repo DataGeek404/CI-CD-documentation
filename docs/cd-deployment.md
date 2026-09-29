@@ -1,4 +1,4 @@
-# 5 Continuous Delivery & Deployment 
+# 5 Continuous Delivery & Deployment
 
 ## Overview
 
@@ -23,12 +23,14 @@ They focus on automatically delivering and deploying tested and validated code i
 ## Key Stages of a CD Deployment Workflow
 
 ### 1. **Artifact Retrieval**
+
 - Retrieves build artifacts from the **artifact repository** (e.g., Nexus, JFrog Artifactory, Docker Registry).  
 - Ensures deployment is based on **tested and versioned artifacts**, not raw code.
 
 ---
 
 ### 2. **Infrastructure Provisioning**
+
 - Automates the creation of servers, containers, or cloud resources using **Infrastructure as Code (IaC)**.  
 - Tools: Terraform, AWS CloudFormation, Ansible, Pulumi.  
 - Ensures environments (dev, staging, production) are consistent and reproducible.
@@ -36,12 +38,14 @@ They focus on automatically delivering and deploying tested and validated code i
 ---
 
 ### 3. **Configuration Management**
+
 - Ensures that applications are deployed with correct configurations (environment variables, secrets, endpoints).  
 - Tools: Ansible, Chef, Puppet, Kubernetes ConfigMaps & Secrets, Vault.  
 
 ---
 
 ### 4. **Deployment Strategies**
+
 Different strategies ensure zero downtime and safe releases:  
 
 - **Recreate Deployment**  
@@ -64,6 +68,7 @@ Different strategies ensure zero downtime and safe releases:
 ---
 
 ### 5. **Automated Testing in Deployment**
+
 - **Smoke Tests**: Quick checks after deployment.  
 - **End-to-End Tests**: Validate real-world workflows.  
 - **Performance & Load Tests**: Ensure stability under traffic.  
@@ -72,6 +77,7 @@ Different strategies ensure zero downtime and safe releases:
 ---
 
 ### 6. **Monitoring & Observability**
+
 - Continuous monitoring ensures smooth deployments and quick detection of issues.  
 - **Metrics:** CPU, memory, response times, error rates.  
 - **Logs:** Aggregated and analyzed for troubleshooting.  
@@ -80,6 +86,7 @@ Different strategies ensure zero downtime and safe releases:
 ---
 
 ### 7. **Rollback Mechanisms**
+
 - Rollback strategies are critical in case of failed deployments.  
 - Options:  
   - Revert to last stable version from artifact repository.  
@@ -91,6 +98,7 @@ Different strategies ensure zero downtime and safe releases:
 ## Example CD Deployment Workflow
 
 ### ASCII Diagram
+
 ```text
        +--------------------+
        |  Artifact Storage  |

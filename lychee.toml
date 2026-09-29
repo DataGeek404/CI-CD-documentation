@@ -1,0 +1,36 @@
+# lychee link checker configuration, used by .github/workflows/docs-quality.yml.
+# Options mirror the CLI flags (dashes become underscores):
+# https://lychee.cli.rs/guides/config/
+
+# Only check external links. Internal doc links are validated by the
+# Docusaurus build itself (onBrokenLinks: 'throw' in docusaurus.config.ts).
+scheme = ["https", "http"]
+
+# Skip localhost, private IP ranges and link-local addresses used in examples.
+exclude_all_private = true
+
+# URLs inside code blocks are examples, not references.
+include_verbatim = false
+
+# Treat rate limiting (429) as "reachable"; retry transient failures.
+accept = ["200..=299", "429"]
+max_retries = 3
+timeout = 20
+
+# Regexes for URLs that are placeholders or block automated clients.
+exclude = [
+  "example\\.(com|org)",
+  "your-org",
+  "YOUR_",
+  "^https?://(www\\.)?(x|twitter|linkedin)\\.com",
+  # Links to files in this repo 404 on a PR until the PR is merged.
+  "^https://github\\.com/Prime-victor/CI-CD-documentation/(blob|tree)/",
+]
+
+# Generated/vendored content and untouched Docusaurus starter pages.
+exclude_path = [
+  "node_modules",
+  "build",
+  "\\.docusaurus",
+  "docs/tutorial-",
+]

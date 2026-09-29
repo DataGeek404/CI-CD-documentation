@@ -5,7 +5,7 @@ type FeatureItem = {
   title: string;
   description: string;
   image: string;
-  
+  icon?: React.ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [

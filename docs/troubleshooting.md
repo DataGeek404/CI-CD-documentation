@@ -6,6 +6,7 @@ Even with a well-implemented CI/CD pipeline, issues can still arise during **bui
 **Troubleshooting** is the process of diagnosing and resolving these issues quickly to keep the pipeline running smoothly and ensure reliable software delivery.
 
 A systematic troubleshooting approach allows teams to:
+
 - Detect the root cause of failures.
 - Reduce downtime and delivery delays.
 - Prevent recurring issues.
@@ -16,6 +17,7 @@ A systematic troubleshooting approach allows teams to:
 ## Common Categories of CI/CD Issues
 
 ### 1. **Source Control Issues**
+
 - **Symptoms:** Merge conflicts, missing commits, outdated branches.  
 - **Causes:**
   - Poor branching strategy.
@@ -29,6 +31,7 @@ A systematic troubleshooting approach allows teams to:
 ---
 
 ### 2. **Build Failures**
+
 - **Symptoms:** Compilation errors, dependency resolution failures, misconfigured build tools.  
 - **Causes:**
   - Incorrect build scripts.
@@ -42,6 +45,7 @@ A systematic troubleshooting approach allows teams to:
 ---
 
 ### 3. **Test Failures**
+
 - **Symptoms:** Unit, integration, or regression tests failing in pipeline.  
 - **Causes:**
   - Flaky tests (inconsistent results).
@@ -56,6 +60,7 @@ A systematic troubleshooting approach allows teams to:
 ---
 
 ### 4. **Deployment Failures**
+
 - **Symptoms:** Failed deployments, missing environment variables, broken services.  
 - **Causes:**
   - Misconfigured infrastructure (e.g., ports, networks).
@@ -70,6 +75,7 @@ A systematic troubleshooting approach allows teams to:
 ---
 
 ### 5. **Pipeline Performance Issues**
+
 - **Symptoms:** Long build times, slow test execution, bottlenecks.  
 - **Causes:**
   - Inefficient build or test scripts.
@@ -84,6 +90,7 @@ A systematic troubleshooting approach allows teams to:
 ---
 
 ### 6. **Security & Compliance Failures**
+
 - **Symptoms:** Vulnerability scans fail, secrets exposed in code, non-compliance with policies.  
 - **Causes:**
   - Hardcoded credentials.
@@ -99,21 +106,25 @@ A systematic troubleshooting approach allows teams to:
 ## Troubleshooting Workflow
 
 ### Step 1: **Identify the Issue**
+
 - Review pipeline logs (build logs, test reports, deployment logs).  
 - Check monitoring dashboards and alerts.  
 - Reproduce the error locally if possible.  
 
 ### Step 2: **Isolate the Problem**
+
 - Determine if it’s code-related, infrastructure-related, or pipeline-related.  
 - Compare failing builds with the last successful build.  
 - Roll back recent changes to confirm.  
 
 ### Step 3: **Fix and Verify**
+
 - Apply fixes incrementally.  
 - Rerun the pipeline or specific failed stage.  
 - Validate results with automated tests.  
 
 ### Step 4: **Document & Prevent Recurrence**
+
 - Document root cause and resolution in the project’s knowledge base.  
 - Add automated checks (linting, testing, scanning).  
 - Improve monitoring and alerts for faster detection.  
@@ -123,6 +134,7 @@ A systematic troubleshooting approach allows teams to:
 ## Example Troubleshooting Flow
 
 ### ASCII Diagram
+
 ```text
     Pipeline Failure
           │

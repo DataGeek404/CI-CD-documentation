@@ -1,0 +1,81 @@
+# Template: build a Docker image with layer caching and push it to
+# GitHub Container Registry (ghcr.io). Pull requests build but do not push.
+# Copy to .github/workflows/docker.yml and set IMAGE_NAME / context / file.
+name: Docker
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*.*.*"] # release tags become image tags (see metadata step)
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  REGISTRY: ghcr.io
+  # ghcr.io requires a lowercase name; github.repository keeps the owner's
+  # casing, so set a lowercase literal if your owner/repo has capitals.
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    name: Build and push image
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write # push to ghcr.io with GITHUB_TOKEN (no PAT needed)
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # Buildx (BuildKit) is required for the GitHub Actions cache backend.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      # Skip login on PRs: fork PRs have no write token and we don't push anyway.
+      - name: Log in to ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Generates tags and OCI labels from the Git context:
+      #   push to main   -> :main and :sha-<short>
+      #   tag v1.2.3     -> :1.2.3 and :1.2
+      #   pull request   -> :pr-<number> (built, not pushed)
+      - name: Extract image metadata
+        id: meta
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha
+
+      - name: Build and push
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          file: ./Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # Layer cache stored in the GitHub Actions cache service.
+          # mode=max also caches intermediate stages of multi-stage builds.
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

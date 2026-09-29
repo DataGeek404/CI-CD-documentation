@@ -23,6 +23,7 @@ CI workflows are triggered whenever developers push changes to the **version con
 ## Key Stages of a CI Workflow
 
 ### 1. **Code Commit & Trigger**
+
 - Developers commit changes to the **main repository**.
 - Triggers can be:
   - **Push events** (code pushed to a branch).
@@ -33,6 +34,7 @@ CI workflows are triggered whenever developers push changes to the **version con
 ---
 
 ### 2. **Source Retrieval**
+
 - The pipeline checks out the latest code from the repository.  
 - Dependencies and submodules are fetched.  
 - Code versioning ensures reproducibility.
@@ -40,6 +42,7 @@ CI workflows are triggered whenever developers push changes to the **version con
 ---
 
 ### 3. **Build Stage**
+
 - Application is compiled or packaged.  
 - Dependency management tools (Maven, Gradle, npm, pip, etc.) resolve and install libraries.  
 - Generated artifacts may be stored in an **artifact repository** (e.g., JFrog Artifactory, Nexus).
@@ -47,6 +50,7 @@ CI workflows are triggered whenever developers push changes to the **version con
 ---
 
 ### 4. **Static Code Analysis (Optional but Recommended)**
+
 - Code is scanned for style violations, code smells, and potential bugs.  
 - Tools: SonarQube, ESLint, Pylint, Checkstyle.  
 - Helps enforce consistent coding standards.
@@ -54,6 +58,7 @@ CI workflows are triggered whenever developers push changes to the **version con
 ---
 
 ### 5. **Automated Testing**
+
 - **Unit Tests:** Validate individual components or functions.  
 - **Integration Tests:** Check interactions between modules or services.  
 - **Regression Tests:** Ensure new changes do not break existing functionality.  
@@ -64,6 +69,7 @@ CI workflows are triggered whenever developers push changes to the **version con
 ---
 
 ### 6. **Build Artifact Creation**
+
 - Successful builds are packaged into deployable units:
   - JAR/WAR files (Java).
   - Docker images.
@@ -74,6 +80,7 @@ CI workflows are triggered whenever developers push changes to the **version con
 ---
 
 ### 7. **Reporting & Notifications**
+
 - Developers are notified of build/test results via:
   - Emails.
   - ChatOps integrations (Slack, Microsoft Teams).
@@ -85,6 +92,7 @@ CI workflows are triggered whenever developers push changes to the **version con
 ## Example CI Workflow Diagram
 
 ### ASCII Diagram
+
 ```text
  Developer Commit
         │

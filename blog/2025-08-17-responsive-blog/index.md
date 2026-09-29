@@ -44,6 +44,7 @@ toc_max_heading_level: 4
 ```
 
 **Why this matters**
+
 - `image` is used for social cards (Open Graph) and looks great when shared.
 - `authors` must match a key in `blog/authors.yml`.
 - `toc_*` keeps your ToC tidy on mobile.
@@ -63,26 +64,31 @@ A short, crisp intro makes your excerpt useful in lists and RSS.
 ## 3) Steps (mobile-first)
 
 ### Step 1 — Structure your headings
+
 Keep headings compact (H2–H4). Long headings wrap poorly on mobile.
 
 ### Step 2 — Write scannable paragraphs
+
 Use short paragraphs (2–4 lines) and bullets for dense info.
 
 ### Step 3 — Add code blocks with titles
+
 ```tsx title="Example React snippet"
 export default function Hello() {
   return <h1>Hello, world!</h1>;
 }
 ```
+
 ```bash title="Handy CLI"
 npm run build
 npm run serve
 ```
 
 ### Step 4 — Add a simple diagram
+
 The goal is clarity. ASCII works everywhere.
 
-```
+```text
 +---------------------------+
 |        Header             |
 +--------------+------------+
@@ -97,6 +103,7 @@ Or drop in an illustrative image:
 ![Layout diagram: header, content, sidebar, footer](./diagram-800x400.png)
 
 ### Step 5 — Use callouts for key points
+
 :::tip
 Keep your **excerpt** short by placing `<!-- truncate -->` early in the post.
 :::
