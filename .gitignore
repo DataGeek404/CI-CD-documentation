@@ -18,3 +18,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local secrets (copy templates/.env.example to .env)
+.env
+
+# Vercel CLI project link and pulled settings
+.vercel

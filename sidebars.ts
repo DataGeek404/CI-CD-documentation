@@ -7,6 +7,7 @@ module.exports = {
       type: 'category',
       label: 'DevOps & CI/CD',
       items: [
+        'introduction',
         'overview',
         'architecture',
         'branching',
