@@ -32,6 +32,7 @@ Before setting up CI/CD, ensure the following:
 ## 2. Setup Steps
 
 ### Step 1: Configure Source Control
+
 - Create a **Git repository** for your project.
 - Define **branching rules** (e.g., main branch protected, PRs required).
 - Enable hooks for **automated CI/CD triggers** on push or merge.
@@ -39,6 +40,7 @@ Before setting up CI/CD, ensure the following:
 ---
 
 ### Step 2: Provision Environments
+
 - **Development:** Local dev machines or sandbox environments.  
 - **Staging/Test:** Pre-production environment mirroring production.  
 - **Production:** Customer-facing live environment.  
@@ -48,11 +50,13 @@ Use **Infrastructure as Code (IaC)** (Terraform, Ansible, Pulumi) to ensure envi
 ---
 
 ### Step 3: Select a CI/CD Tool
+
 - **Cloud-native:** GitHub Actions, GitLab CI, Bitbucket Pipelines, Azure DevOps.  
 - **Self-hosted:** Jenkins, TeamCity, Bamboo.  
 - **Container-native:** ArgoCD, Tekton, Spinnaker.  
 
 Criteria for selection:
+
 - Team expertise.
 - Ecosystem compatibility.
 - Security and compliance needs.
@@ -61,7 +65,9 @@ Criteria for selection:
 ---
 
 ### Step 4: Define the Pipeline
+
 A pipeline usually includes:
+
 1. **Code Checkout** – Clone source code from repository.
 2. **Build** – Compile and package code.
 3. **Test** – Run unit, integration, and security tests.
@@ -72,6 +78,7 @@ A pipeline usually includes:
 ---
 
 ### Step 5: Configure Pipeline File
+
 Each CI/CD tool uses a **pipeline configuration file** stored in the repository:
 
 - **Jenkins:** `Jenkinsfile`
@@ -81,6 +88,7 @@ Each CI/CD tool uses a **pipeline configuration file** stored in the repository:
 - **Azure Pipelines:** `azure-pipelines.yml`
 
 **Example (GitHub Actions):**
+
 ```yaml
 name: CI Pipeline
 on:

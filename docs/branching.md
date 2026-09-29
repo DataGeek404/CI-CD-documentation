@@ -1,10 +1,12 @@
 # 3. Branching Strategy
+
 ## Overview
 
 A **branching strategy** defines how developers collaborate, manage features, and release code in a **version control system (VCS)** like Git.  
 It is a critical part of **CI/CD pipelines**, ensuring smooth integration, predictable releases, and minimal conflicts.  
 
 A good branching strategy provides:
+
 - Clear rules for code organization.
 - Easy collaboration among developers.
 - Streamlined release management.
@@ -25,6 +27,7 @@ A good branching strategy provides:
 ## Common Branching Strategies
 
 ### 1. **Trunk-Based Development**
+
 - **Description:** Developers commit directly to the main branch (`main` or `master`) with very short-lived feature branches (if any).  
 - **Characteristics:**
   - Small, frequent commits.
@@ -42,6 +45,7 @@ A good branching strategy provides:
 ---
 
 ### 2. **Feature Branching**
+
 - **Description:** Each new feature or bug fix is developed in its own branch, merged into the main branch only when complete.  
 - **Branch Types:**
   - `feature/*` → New functionality.
@@ -57,6 +61,7 @@ A good branching strategy provides:
 ---
 
 ### 3. **GitFlow**
+
 - **Description:** A popular strategy that defines multiple branches for features, releases, and hotfixes.  
 - **Branch Types:**
   - `main` → Always stable production code.
@@ -75,6 +80,7 @@ A good branching strategy provides:
 ---
 
 ### 4. **GitHub Flow**
+
 - **Description:** A simplified branching strategy often used with GitHub.  
 - **Workflow:**
   - Developers create short-lived `feature/*` branches.

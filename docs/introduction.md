@@ -6,6 +6,7 @@
 It is a modern software engineering practice that automates the process of building, testing, and deploying applications. CI/CD bridges the gap between development and operations (DevOps), ensuring faster, more reliable, and more frequent releases of software to production.
 
 At its core, CI/CD enables development teams to:
+
 - Deliver high-quality software quickly and consistently.
 - Reduce manual errors through automation.
 - Shorten the feedback loop between developers, testers, and end-users.
@@ -19,12 +20,14 @@ At its core, CI/CD enables development teams to:
 The main goal of CI is to detect issues early in the development cycle, making them easier and less costly to fix.
 
 ### Key Principles of CI
+
 - **Frequent Commits:** Developers integrate their code at least once daily.
 - **Automated Builds:** Each code commit triggers an automated build to ensure the project compiles successfully.
 - **Automated Testing:** Unit, integration, and functional tests run automatically to validate code quality.
 - **Immediate Feedback:** Developers are notified quickly of failures so they can fix issues promptly.
 
 ### Benefits of CI
+
 - Early bug detection.
 - Faster development cycles.
 - Improved collaboration between developers.
@@ -38,11 +41,13 @@ The main goal of CI is to detect issues early in the development cycle, making t
 Although deployments may still require manual approval, the software is always in a deployable state.
 
 ### Key Principles of Continuous Delivery
+
 - **Automated Deployments:** Applications can be deployed to staging or testing environments with minimal manual intervention.
 - **Environment Parity:** Staging and production environments closely mirror each other.
 - **Release on Demand:** Teams can decide when to release new features, but the pipeline ensures everything is ready at any time.
 
 ### Benefits of Continuous Delivery
+
 - Reduced deployment risk.
 - Faster release cycles.
 - Higher confidence in release readiness.
@@ -56,6 +61,7 @@ Although deployments may still require manual approval, the software is always i
 This approach ensures rapid delivery of features and bug fixes directly to users.
 
 ### Benefits of Continuous Deployment
+
 - Shortest feedback loop from end-users.
 - Increased responsiveness to customer needs.
 - Higher developer productivity.
@@ -66,12 +72,14 @@ This approach ensures rapid delivery of features and bug fixes directly to users
 ## Why CI/CD Matters
 
 Modern software development demands speed, quality, and reliability. CI/CD addresses these challenges by:
+
 - Automating repetitive tasks (builds, tests, deployments).
 - Ensuring consistency across environments.
 - Reducing integration and release pain.
 - Enabling teams to deliver value to customers continuously.
 
 Without CI/CD, organizations face:
+
 - Long release cycles.
 - High integration costs.
 - Frequent production issues.
@@ -103,6 +111,7 @@ A typical CI/CD pipeline consists of the following stages:
 ## Popular CI/CD Tools
 
 Several tools and platforms support CI/CD implementation, including:
+
 - **Jenkins** – Open-source automation server.
 - **GitHub Actions** – CI/CD native to GitHub.
 - **GitLab CI/CD** – Integrated with GitLab repositories.
@@ -117,6 +126,7 @@ Several tools and platforms support CI/CD implementation, including:
 
 CI/CD is not just a set of tools, but a **cultural shift** in how teams build, test, and release software.  
 By adopting CI/CD practices, organizations can achieve:
+
 - Faster and safer releases.
 - Improved collaboration between teams.
 - Higher customer satisfaction.
@@ -127,4 +137,3 @@ Whether starting small with CI or advancing to full **Continuous Deployment**, i
     B --> C[Test]
     C --> D[Deploy]
     D --> E[Monitor]
-

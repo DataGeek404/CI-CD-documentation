@@ -1,0 +1,30 @@
+// markdownlint-cli2 configuration, shared by `npm run lint:md` and the
+// DavidAnson/markdownlint-cli2-action step in .github/workflows/docs-quality.yml.
+// Rule reference: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+{
+  "config": {
+    "default": true,
+    // Prose paragraphs are written one per line; wrapping at 80 chars adds churn.
+    "MD013": false,
+    // Table pipe alignment is cosmetic and fights with editor auto-formatting.
+    "MD060": false,
+    // Bold lead-ins like **Why this matters** are an intentional style here.
+    "MD036": false
+  },
+  // Files to lint when no globs are passed on the command line.
+  "globs": [
+    "**/*.{md,mdx}"
+  ],
+  "ignores": [
+    "node_modules/**",
+    "build/**",
+    ".docusaurus/**",
+    // Docusaurus starter content, intentionally left as shipped.
+    "docs/intro.md",
+    "docs/tutorial-basics/**",
+    "docs/tutorial-extras/**",
+    "blog/2019-05-28-first-blog-post.md",
+    "blog/2021-08-26-welcome/**",
+    "src/pages/markdown-page.md"
+  ]
+}

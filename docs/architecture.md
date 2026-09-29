@@ -6,6 +6,7 @@ The **architecture of CI/CD** defines how code changes move seamlessly from deve
 It combines practices, processes, and tools that integrate software development (Dev) with IT operations (Ops), forming the backbone of the **DevOps culture**.
 
 A typical CI/CD architecture ensures:
+
 - **Automation** of builds, tests, and deployments.
 - **Consistency** across environments (dev, staging, production).
 - **Scalability** to handle growing teams and projects.
@@ -16,6 +17,7 @@ A typical CI/CD architecture ensures:
 ## Key Components of CI/CD Architecture
 
 ### 1. **Source Code Management (SCM)**
+
 - **Purpose:** Central repository for storing, versioning, and managing code.
 - **Examples:** GitHub, GitLab, Bitbucket.
 - **Practices:**
@@ -26,6 +28,7 @@ A typical CI/CD architecture ensures:
 ---
 
 ### 2. **Continuous Integration (CI)**
+
 - **Purpose:** Automates the integration of code into a shared repository.
 - **Processes:**
   - **Build automation:** Compiling source code and resolving dependencies.
@@ -36,6 +39,7 @@ A typical CI/CD architecture ensures:
 ---
 
 ### 3. **Artifact Repository**
+
 - **Purpose:** Stores build outputs (artifacts) for reuse and deployment.
 - **Examples:** JFrog Artifactory, Nexus Repository, Docker Hub.
 - **Benefits:**
@@ -45,6 +49,7 @@ A typical CI/CD architecture ensures:
 ---
 
 ### 4. **Continuous Delivery/Deployment (CD)**
+
 - **Purpose:** Automates the release of tested code into staging and production.
 - **Types:**
   - **Continuous Delivery:** Deployments to production require manual approval.
@@ -57,6 +62,7 @@ A typical CI/CD architecture ensures:
 ---
 
 ### 5. **Environment Infrastructure**
+
 - **Purpose:** Provides the execution environments for applications.
 - **Key Elements:**
   - **Development Environment:** Local setups for coding and initial testing.
@@ -67,6 +73,7 @@ A typical CI/CD architecture ensures:
 ---
 
 ### 6. **Monitoring & Logging**
+
 - **Purpose:** Tracks system health, performance, and failures after deployment.
 - **Practices:**
   - Application Performance Monitoring (APM).
@@ -77,6 +84,7 @@ A typical CI/CD architecture ensures:
 ---
 
 ### 7. **Feedback Loop**
+
 - **Purpose:** Ensures continuous improvement by feeding runtime insights back to developers.
 - **Examples:**
   - Error alerts triggering bug fixes.

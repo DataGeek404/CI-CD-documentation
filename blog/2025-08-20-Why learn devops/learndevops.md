@@ -42,15 +42,19 @@ Instead of working in silos, DevOps teams collaborate to **plan, build, test, de
 ## 2) Why learn DevOps?
 
 ### 🚀 Faster delivery
+
 DevOps enables rapid releases without sacrificing stability.
 
 ### 🛠 Better collaboration
+
 Bridges the gap between dev, QA, and ops teams—reducing friction.
 
 ### ⚡ Automation everywhere
+
 From testing to deployment, repetitive tasks are automated.
 
 ### 📈 High demand in the job market
+
 Companies across industries are adopting DevOps as a standard.
 
 ---
@@ -87,4 +91,3 @@ DevOps isn’t a single job—it’s a **career path** with multiple roles:
 ---
 
 ## 5) Learning roadmap (step-by-step)
-
