@@ -1,0 +1,59 @@
+# Dependabot version updates.
+# Reference: https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
+version: 2
+updates:
+  # npm packages in package.json / package-lock.json.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Etc/UTC
+    open-pull-requests-limit: 5
+    # Conventional Commits: "chore(deps): ..." and "chore(deps-dev): ...".
+    commit-message:
+      prefix: chore
+      prefix-development: chore
+      include: scope
+    groups:
+      # All @docusaurus/* packages must stay on the same version.
+      docusaurus:
+        patterns:
+          - "@docusaurus/*"
+      react:
+        patterns:
+          - react
+          - react-dom
+      # Everything else: batch minor and patch bumps into one PR.
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  # SHA-pinned actions. "/" means .github/workflows (plus a root action.yml).
+  # Dependabot updates the SHA and the "# vX.Y.Z" comment together.
+  # templates/workflows is not scanned; bump those pins by hand.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Etc/UTC
+    commit-message:
+      prefix: ci
+      include: scope
+    groups:
+      actions:
+        patterns:
+          - "*"
+
+  # Base images in the copy-paste Dockerfile template.
+  - package-ecosystem: docker
+    directory: /templates
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: chore
+      include: scope
