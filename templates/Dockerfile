@@ -33,7 +33,7 @@ COPY . .
 RUN npm run build
 
 # ---- Stage 2: serve ---------------------------------------------------------
-FROM nginx:1.30-alpine AS runtime
+FROM nginx:1.31-alpine AS runtime
 
 # Custom server block: Docusaurus 404 page and long-lived caching for hashed assets.
 COPY templates/nginx.conf /etc/nginx/conf.d/default.conf
